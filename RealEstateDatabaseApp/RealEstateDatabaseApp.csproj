@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+        <UseWindowsForms>true</UseWindowsForms>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MySql.Data" Version="9.1.0" />
+      <PackageReference Include="ReportViewerCore.NETCore" Version="15.1.25" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Reports\FormularzRezerwacji.rdlc" />
+        <Content Include="Reports\FormularzRezerwacji.rdlc">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Remove="Reports\LiczbaNieruchomosciWykres.rdlc" />
+        <Content Include="Reports\LiczbaNieruchomosciWykres.rdlc">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Remove="Reports\NieruchomosciWedlugTypu.rdlc" />
+        <Content Include="Reports\NieruchomosciWedlugTypu.rdlc">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+      <None Remove="Reports\ListaNajemcow.rdlc" />
+      <Content Include="Reports\ListaNajemcow.rdlc">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+        
+    </ItemGroup>
+
+</Project>

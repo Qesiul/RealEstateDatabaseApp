@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="RealEstateDatabaseApp.UmowyForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:RealEstateDatabaseApp"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <StackPanel>
+            <TextBox x:Name="TxtDealType" local:TextBoxPlaceholder.PlaceholderText="Typ umowy" Margin="5" />
+            <TextBox x:Name="TxtRent" local:TextBoxPlaceholder.PlaceholderText="Czynsz" Margin="5" />
+            <TextBox x:Name="TxtDeposit" local:TextBoxPlaceholder.PlaceholderText="Kaucja" Margin="5" />
+            <DatePicker x:Name="TxtDateStart" local:TextBoxPlaceholder.PlaceholderText="Data rozpoczecia" Margin="5" />
+            <DatePicker x:Name="TxtDateEnd" local:TextBoxPlaceholder.PlaceholderText="Data zakonczenia" Margin="5" />
+            <DatePicker x:Name="TxtDateSigned" local:TextBoxPlaceholder.PlaceholderText="Data zawarcia" Margin="5" />
+            <ComboBox x:Name="TxtIdOwner" DropDownOpened="LoadWlasciciele" Margin="5">
+                <ComboBoxItem Content="Wybierz właściciela" IsSelected="True" IsEnabled="False" /><ComboBox/>
+            </ComboBox>
+            <ComboBox x:Name="TxtIdRenter" DropDownOpened="LoadNajemcy" Margin="5">
+                <ComboBoxItem Content="Wybierz najemce" IsSelected="True" IsEnabled="False" /><ComboBox/>
+            </ComboBox>
+            <ComboBox x:Name="TxtIdEstate" DropDownOpened="LoadNieruchomosci" Margin="5">
+                <ComboBoxItem Content="Wybierz nieruchomosc" IsSelected="True" IsEnabled="False" /><ComboBox/>
+            </ComboBox>
+            <Button Content="Dodaj umowe" Click="AddUmowa" Margin="5" />
+            <Button Content="Usuń umowe" Click="DeleteUmowa" Margin="5" />
+        </StackPanel>
+        
+    </Grid>
+</UserControl>

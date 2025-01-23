@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition"
+        xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="DataSource1">
+      <DataSourceReference>RealEstateDatabase</DataSourceReference>
+      <rd:DataSourceID>8f8c735e-8894-4f20-8d47-8b4e8ef0dd7c</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Fields>
+        <Field Name="Udogodnienie">
+          <DataField>Udogodnienie</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Liczba">
+          <DataField>Liczba</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandText>
+          SELECT ud.id_udogodnienia AS Udogodnienie, COUNT(nu.id_udogodnienia) AS Liczba
+          FROM nieruchomosc_udogodnienie nu
+          JOIN udogodnienie ud ON nu.id_udogodnienia = ud.id_udogodnienia
+          GROUP BY ud.id_udogodnienia
+        </CommandText>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Body>
+    <ReportItems>
+      <Chart Name="Chart1">
+        <DataSetName>DataSet1</DataSetName>
+        <ChartAreas>
+          <ChartArea Name="Default">
+            <ChartCategoryAxes>
+              <ChartAxis Name="CategoryAxis">
+                <Interval>1</Interval>
+                <LabelInterval>1</LabelInterval>
+                <ChartAxisTitle>
+                  <Caption>ID Udogodnienia</Caption>
+                </ChartAxisTitle>
+                <LabelsAutoFitDisabled>true</LabelsAutoFitDisabled>
+                <Angle>45</Angle>
+              </ChartAxis>
+            </ChartCategoryAxes>
+            <ChartValueAxes>
+              <ChartAxis Name="ValueAxis">
+                <ChartAxisTitle>
+                  <Caption>Liczba</Caption>
+                </ChartAxisTitle>
+              </ChartAxis>
+            </ChartValueAxes>
+          </ChartArea>
+        </ChartAreas>
+        <ChartCategoryHierarchy>
+          <ChartMembers>
+            <ChartMember Name="CategoryGroup">
+              <Label>=Fields!Udogodnienie.Value</Label>
+              <Group Name="CategoryGroup">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Udogodnienie.Value</GroupExpression>
+                </GroupExpressions>
+              </Group>
+            </ChartMember>
+          </ChartMembers>
+        </ChartCategoryHierarchy>
+        <ChartSeriesHierarchy>
+          <ChartMembers>
+            <ChartMember Name="SeriesGroup">
+              <Label>Series1</Label>
+            </ChartMember>
+          </ChartMembers>
+        </ChartSeriesHierarchy>
+        <ChartData>
+          <ChartSeriesCollection>
+            <ChartSeries Name="Series1">
+              <Type>Column</Type>
+              <ChartDataPoints>
+                <ChartDataPoint Name="DataPoint1">
+                  <ChartDataPointValues>
+                    <X>=Fields!Udogodnienie.Value</X>
+                    <Y>=Fields!Liczba.Value</Y>
+                  </ChartDataPointValues>
+                </ChartDataPoint>
+              </ChartDataPoints>
+              <ChartEmptyPoints>
+                <Style />
+              </ChartEmptyPoints>
+            </ChartSeries>
+          </ChartSeriesCollection>
+        </ChartData>
+        <Style />
+        <Top>0.25in</Top>
+        <Left>0.25in</Left>
+        <Height>3in</Height>
+        <Width>6in</Width>
+      </Chart>
+    </ReportItems>
+    <Height>3.5in</Height>
+    <Style />
+  </Body>
+  <Width>8.5in</Width>
+  <Page>
+    <PageHeight>11in</PageHeight>
+    <PageWidth>8.5in</PageWidth>
+    <LeftMargin>1in</LeftMargin>
+    <RightMargin>1in</RightMargin>
+    <TopMargin>1in</TopMargin>
+    <BottomMargin>1in</BottomMargin>
+    <Style />
+  </Page>
+  <rd:ReportID>c4567890-1234-5678-abcd-1234567890ab</rd:ReportID>
+</Report>

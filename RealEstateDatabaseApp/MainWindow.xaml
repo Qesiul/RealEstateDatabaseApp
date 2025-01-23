@@ -1,0 +1,46 @@
+﻿<Window x:Class="RealEstateDatabaseApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RealEstateDatabaseApp"
+        xmlns:behavior="clr-namespace:RealEstateDatabaseApp"
+        mc:Ignorable="d"
+        Title="Baza danych wynajmu nieruchomości" Height="800" Width="1000">
+    <Grid>
+        <!-- Definicje wierszy i kolumn -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" /> <!-- Wiersz dla ComboBox -->
+            <RowDefinition Height="*" />    <!-- Wiersz dla DataGrid -->
+            <RowDefinition Height="Auto" /> <!-- Wiersz dla przycisków i pól tekstowych -->
+        </Grid.RowDefinitions>
+
+        <!-- ComboBox do wyboru tabeli -->
+        <StackPanel Orientation="Horizontal" Margin="10" Grid.Row="0">
+            <ComboBox x:Name="ComboBoxMenu" Width="200" SelectionChanged="ComboBoxTabele_SelectionChanged">
+                <ComboBoxItem IsEnabled="False" Content="Zarządzanie danymi" FontWeight="Bold" />
+                <ComboBoxItem Content="Najemcy" />
+                <ComboBoxItem Content="Nieruchomości" />
+                <ComboBoxItem Content="Dokumenty" />
+                <ComboBoxItem Content="Administratorzy budynku" />
+                <ComboBoxItem Content="Płatności" />
+                <ComboBoxItem Content="Reklamacje" />
+                <ComboBoxItem Content="Serwisanci" />
+                <ComboBoxItem Content="Udogodnienia" />
+                <ComboBoxItem Content="Umowy" />
+                <ComboBoxItem Content="Właściciele" />
+                <ComboBoxItem Content="Zlecenia serwisowe" />
+                <ComboBoxItem Content="Rezerwacje" />
+                <ComboBoxItem IsEnabled="False" Content="Formularze klienta" FontWeight="Bold" />
+                <ComboBoxItem Content="Rezerwacja nieruchomości" />
+            </ComboBox>
+            <MenuItem Header="Raporty" Click="ShowReports_Click" />
+        </StackPanel>
+
+        <!-- DataGrid do wyświetlania danych -->
+        <DataGrid x:Name="DataGridTables" AutoGenerateColumns="True" Margin="10" Grid.Row="1" />
+
+        <!-- Formularz do dodawania i usuwania danych -->
+        <ContentControl x:Name = "DynamicDataForm" Margin="10" Grid.Row="2" />
+    </Grid>
+</Window>
